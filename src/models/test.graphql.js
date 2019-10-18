@@ -6,19 +6,24 @@ type Query {
   hello: String,
   greet(name:  String): String,
   users: [User]
+  getUsers: [User]
 }
 type User {
   _id: ID
-  name: String!
-  last_name: String
+  firstName: String!
+  lastName: String!
+  age: Int!
 }
 input UserInput {
-  number: Int
-  name: String!
-  last_name: String
+  age: Int!
+  firstName: String!
+  lastName: String!
 }
 type Mutation {
+  addUserSample(input: UserInput): User
   addUser(input: UserInput): User
+  updateUser(_id: ID, input: UserInput ) : User
+  deleteUser(_id: ID) : User
 }
 `;
 
